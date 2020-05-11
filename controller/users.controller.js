@@ -39,5 +39,4 @@ module.exports.postCreate = (req,res) =>{
         user.push(req.body);
         res.redirect('/users');
     }
-    
 }
