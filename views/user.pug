@@ -1,0 +1,32 @@
+
+extends ./basic.pug
+block content
+    .container
+        
+        form.d-flex(action="/users/search",method="get", class="d-flex mt-3")
+            input(type="text",class="form-control",name="nameUser", style="width:300px;")
+            button(class="ml-3 btn btn-success") Search
+
+        table.table.table-striped.table-dark.mt-3
+                thead
+                    tr
+                    th Name
+                    th ID
+                    th View
+                tbody
+                    each item in user
+                        tr
+                            td= item.name
+                            td= item.id
+                            td
+                                a(class="ml-1" ,href=`/users/${item.id}`) View
+        a(href="/users/create") Create
+
+
+
+
+
+
+
+                
+
