@@ -39,6 +39,6 @@ module.exports.postCreate = (req,res) =>{
         user.push(req.body);
         res.redirect('/users');
 
-        // Cay cau tre nam xua
+        // Cay cau tre nam xua 2 ben dong lua nho
     }
 }
