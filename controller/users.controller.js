@@ -24,6 +24,7 @@ module.exports.id =  (req,res) =>{
     let arrName = user.filter(element =>{
         return element.id == idView;
     });
+    
     let name = arrName[0].name;
     res.send('<h1>Hello User '+name+'</h1>');
 };

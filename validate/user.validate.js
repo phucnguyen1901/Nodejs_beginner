@@ -1,7 +1,7 @@
 
 module.exports.postCreate = (req,res,next) =>{
     if(!req.body.name){
-        res.render('create',{messageError: "Name can't empty"});
+        res.render('users/create',{messageError: "Name can't empty"});
         return;
     }
     next();
