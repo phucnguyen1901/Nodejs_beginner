@@ -1,13 +1,8 @@
 
-let user = [
-        {name:"Phuong",id:1},
-        {name: 'Hong',id:2},
-        {name:"Tinh",id:3},
-        {name: 'Lo',id:4}
-]
+let user = require('../database')
 
 module.exports.index = (req,res) =>{
-    res.render('user',{user:user});
+    res.render('users/user',{user:user});
 };
 
 module.exports.search = (req,res) =>{
@@ -15,11 +10,13 @@ module.exports.search = (req,res) =>{
     let matchSearch = user.filter(user =>{
         return user.name.toLowerCase().indexOf(q) !== -1;
     });
-    res.render('user',{user:matchSearch});
+    res.render('users/user',{user:matchSearch});
 };
 
 module.exports.create = (req,res) =>{
-    res.render('create');
+    console.log(req.cookies);
+    res.render('users/create');
+    // res.render('auth');
 };
 
 module.exports.id =  (req,res) =>{
@@ -32,13 +29,7 @@ module.exports.id =  (req,res) =>{
 };
 
 module.exports.postCreate = (req,res) =>{
-    if(!req.body.name){
-        res.render('create',{messageError: "Name can't empty"});
-    }else{
-        console.log(req.body);
-        user.push(req.body);
-        res.redirect('/users');
-
-        // Cay cau tre nam xua 2 ben dong lua nho
-    }
+    console.log(req.body);
+    user.push(req.body);
+    res.redirect('/users');
 }

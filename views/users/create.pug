@@ -1,10 +1,9 @@
 
-extends ./basic.pug
+extends ../basic.pug
 block content
     .container.mt-3
         h3= messageError
         form(action="/users/create",method='post')
            input(type="text" ,style="width:300px",name='name',class='form-control')
-        //-    input(type="text" ,style="width:300px",name='id',class='form-control')
            button(class="btn btn-success mt-3") Create
 
