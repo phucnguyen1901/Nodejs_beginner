@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const usersRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
+const productsRouter = require('./routes/product.route');
 
 const app = express();
 const port = 3000
@@ -21,7 +22,7 @@ app.get('/', (req,res)=>{
 
 app.use('/users',usersRouter);
 app.use('/login',authRouter);
-
+app.use('/products',productsRouter);
 
 app.listen(port,()=>{
     console.log(`Listening port ${port}`);

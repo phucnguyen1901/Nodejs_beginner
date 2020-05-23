@@ -7,7 +7,6 @@ module.exports.requireAuth = (req,res,next) =>{
    }
 
    const userMatch = user.find(element=> element.id == req.cookies.user_id);
-   console.log("userMatch: ",userMatch);
    if(!userMatch){
        res.redirect('/login');
    }

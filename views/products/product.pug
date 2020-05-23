@@ -1,0 +1,32 @@
+extends ../basic.pug
+block content
+    .container.mt-3
+        nav(aria-label='...')
+            ul.pagination
+                if checkPrevious == 1
+                    li.page-item.disabled
+                        span.page-link Previous
+                else
+                    li.page-item
+                        a.page-link(href=`/products?page=${pageCurrent-1}`) Previous
+                -let i = 1
+                while i <= pages
+                    li.page-item
+                        a.page-link(href=`/products?page=${i}`)= i++
+                
+                if checkNext == 1
+                    li.page-item.disabled
+                        a.page-link(href='#') Next
+                else
+                    li.page-item
+                        a.page-link(href=`/products?page=${pageCurrent+1}`) Next
+
+
+        .row
+            each val in users
+                .col-sm-4
+                        img(src=`${val.img}`)
+                        h1= val.name
+                        .btn.btn-success.mr-2 Buy Now
+                        .btn.btn-danger Add To Cart
+                 
