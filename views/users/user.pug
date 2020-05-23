@@ -10,12 +10,15 @@ block content
         table.table.table-striped.table-dark.mt-3
                 thead
                     tr
+                    th Avatar
                     th Name
                     th ID
                     th View
                 tbody
                     each item in user
                         tr
+                            td
+                                img(src=item.img,class="rounded-circle",style="width:50px")
                             td= item.name
                             td= item.id
                             td

@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller/users.controller');
 const validate = require('../validate/user.validate');
-const middlewares = require('../middlewares/auth.middlewares');
+const middlewares = require('../middlewares/auth.middlewares'); 
+const multer = require('multer');
 
+let upload = multer({ dest: './public/uploads/' });
 
 router.get('/',middlewares.requireAuth,controller.index )
 
@@ -19,6 +21,6 @@ router.get('/create', controller.create )
 
 router.get('/:id', controller.id)
 
-router.post('/create',validate.postCreate, controller.postCreate);
+router.post('/create',upload.single('img'),validate.postCreate, controller.postCreate);
 
 module.exports = router;

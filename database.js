@@ -4,7 +4,7 @@ let user = [
         id:1, 
         username:'phuong',
         password:'phuong',
-        img:"https://upload.wikimedia.org/wikipedia/vi/thumb/1/1d/N%C6%A1i_n%C3%A0y_c%C3%B3_anh_-_Single_Cover.jpg/220px-N%C6%A1i_n%C3%A0y_c%C3%B3_anh_-_Single_Cover.jpg"
+        img: "uploads/d5205eb977593180b482cc133f5ffd4b"
     },
     {   
         name:"B",
