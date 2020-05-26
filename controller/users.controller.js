@@ -32,7 +32,6 @@ module.exports.id =  (req,res) =>{
 module.exports.postCreate = (req,res) =>{
     console.log(req.body);
     req.body.img = req.file.path.split('/').slice(1).join('/');
-
     user.push(req.body);
     res.redirect('/users');
 }

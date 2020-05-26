@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller/users.controller');
 const validate = require('../validate/user.validate');
-const middlewares = require('../middlewares/auth.middlewares'); 
+const middleWares = require('../middlewares/auth.middlewares'); 
 const multer = require('multer');
 
 let upload = multer({ dest: './public/uploads/' });
 
-router.get('/',middlewares.requireAuth,controller.index )
+// router.get('/',(req,res)=>{if(!req.session.username){res.redirect('/login');}},controller.index);
+router.get('/',middleWares.requireAuth,controller.index);
 
 const cookie = (req,res,next) =>{
     res.cookie('user-cookie',1235);

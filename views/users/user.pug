@@ -2,7 +2,8 @@
 extends ../basic.pug
 block content
     .container
-        
+        if userMatch
+            h1= userMatch
         form.d-flex(action="/users/search",method="get", class="d-flex mt-3")
             input(type="text",class="form-control",name="nameUser", style="width:300px;")
             button(class="ml-3 btn btn-success") Search

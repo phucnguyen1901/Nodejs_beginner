@@ -16,7 +16,10 @@ module.exports.postLogin = (req,res) =>{
     console.log(result);
     if(result.length !== 0){
         // res.render('auth/authSuccess',{notify: result[0].name});
-        res.cookie('user_id',result[0].id);
+        // res.cookie('user_id',result[0].id,{
+        //     signed: true
+        // });
+        req.session.username = result[0].name;
         res.redirect('/users');
     }else{
         res.render('auth/auth',{errorMessage:"Tài khoản không tồn tại",username:username,password:password});
