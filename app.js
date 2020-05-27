@@ -7,7 +7,10 @@ const usersRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
 const productsRouter = require('./routes/product.route');
 const cartRouter = require('./routes/cart.route');
-// const session = require('./middlewares/session.middleware')
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+// const csurf = require('csurf');
+
 
 
 const session = require('express-session');
@@ -31,6 +34,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser("siakasdfn202ads"));
 // app.use(session);
 app.use(express.static('public'));
+// app.use(csurf({cookie:true}))
+
 
 app.get('/', (req,res)=>{
     res.render('index',{message:'Good boy',age: 15});
