@@ -2,23 +2,29 @@
 let user = require('../database');
 
 module.exports.addToCart = (req,res,next) =>{
-    let productId = req.params.productId;
+    let productId = parseInt(req.params.productId);
     if(!req.session.cart){
-        req.session.cart = [{productId:1}];
+        req.session.cart = [{
+            id: productId,
+            count: 1
+        }];
+    }else{
+        console.log('Da co session');
+        sessionCart = req.session.cart.find(element => element.id == productId); //object session
+        if(sessionCart){
+            // location in session
+            indexCart = req.session.cart.findIndex(element =>{return element.id == sessionCart.id});
+            req.session.cart[indexCart].count = req.session.cart[indexCart].count +1;
+        }else{
+            req.session.cart.push({
+                id: productId,
+                count:1
+            });
+        }
+
     }
-    let cart = req.session.cart[0].productId;
-    cart = cart +1;
-    // if(cart==productId){
-    //     // cart: cart+1
-    //     cart = cart+1;
-    // }
-
-    console.log(cart);
-    // if(!sessionId){
-    //     res.redirect('/products');
-    // }
-
-    // let sessionMatch = user.find({sessionLocal:sessionId});
+    console.log(req.session.cart);
+    res.redirect('/products');
 
     next();
 };

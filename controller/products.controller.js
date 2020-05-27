@@ -10,12 +10,18 @@ module.exports.product = (req,res) =>{
         let page = 1;
         let x = 3;
         let start = (page - 1)*x;
-        let end = page*x;
+        // let end = page*x;
         let countPage = Math.ceil(user.length / x);
 
         let lodash = _.take(_.drop(user,start),x);  
+        let countCart = 0; // dem so luong trong gio hang
+        if(req.session.cart){
+            req.session.cart.forEach(element =>{ // so luong trong gio hang
+                countCart += element.count;
+            });
+        }
         // res.render('products/product',{users:user.slice(start,end),pages:countPage,checkPrevious:1});
-        res.render('products/product',{users:lodash,pages:countPage,checkPrevious:1,pageCurrent:1});
+        res.render('products/product',{users:lodash,pages:countPage,checkPrevious:1,pageCurrent:1,cart:countCart});
     }else{
         let page = parseInt(req.query.page);
 
@@ -25,7 +31,7 @@ module.exports.product = (req,res) =>{
         }
         let x = 3;
         let start = (page - 1)*x;
-        let end = page*x;
+        // let end = page*x;
         let countPage = Math.ceil(user.length / x);
 
         let checkNext = 0;
@@ -34,6 +40,10 @@ module.exports.product = (req,res) =>{
         }
 
         let lodash = _.take(_.drop(user,start),x);  
+        let countCart = 0;
+        if(req.session.cart){
+            countCart = req.session.cart.length; // so luong trong gio hang
+        }
 
         res.render('products/product',
         {
@@ -41,7 +51,8 @@ module.exports.product = (req,res) =>{
             pages:countPage,
             checkPrevious:checkPrevious,
             checkNext:checkNext,
-            pageCurrent : page
+            pageCurrent : page,
+            cart: countCart
         });
 
     }

@@ -16,6 +16,8 @@ block content
                         a.dropdown-item(href='#') Link 3
                 li.nav-item
                     a.nav-link(href='#') Giỏ hàng
+                        if cart != 0
+                            p.text-warning(style="position: absolute; bottom:5px; right:690px;")= cart
 
 
 
