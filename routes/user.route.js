@@ -8,14 +8,14 @@ const multer = require('multer');
 let upload = multer({ dest: './public/uploads/' });
 
 // router.get('/',(req,res)=>{if(!req.session.username){res.redirect('/login');}},controller.index);
-router.get('/',middleWares.requireAuth,controller.index);
+router.get('/',controller.index);
 
-const cookie = (req,res,next) =>{
-    res.cookie('user-cookie',1235);
-    res.send('hello');
-}
+// const cookie = (req,res,next) =>{
+//     res.cookie('user-cookie',1235);
+//     res.send('hello');
+// }
  
-router.get('/cookie',cookie);
+// router.get('/cookie',cookie);
 router.get('/search', controller.search)
 
 router.get('/create', controller.create )

@@ -8,7 +8,15 @@ const authRouter = require('./routes/auth.route');
 const productsRouter = require('./routes/product.route');
 const cartRouter = require('./routes/cart.route');
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+require('dotenv/config')
+
+mongoose.connect(process.env.MONGO_URL,
+  { useNewUrlParser:true }, 
+  ()=>console.log("Connected MongoDB")
+);
+
+
+
 // const csurf = require('csurf');
 
 

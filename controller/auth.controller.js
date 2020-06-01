@@ -1,14 +1,14 @@
 
-let user = require('../database');
-
+const User = require('../models/user.model');
 
 module.exports.login = (req,res) =>{
     res.render('auth/auth');
 }
 
-module.exports.postLogin = (req,res) =>{
+module.exports.postLogin = async (req,res) =>{
     let username = req.body.username;
     let password = req.body.password;
+    let user = await User.find();
     let result = user.filter( element =>{
         return element.username == username && element.password == password;
     });

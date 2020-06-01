@@ -1,8 +1,7 @@
 
-let user = require('../database');
 
 module.exports.addToCart = (req,res,next) =>{
-    let productId = parseInt(req.params.productId);
+    let productId = req.body.productId;
     if(!req.session.cart){
         req.session.cart = [{
             id: productId,
@@ -23,8 +22,12 @@ module.exports.addToCart = (req,res,next) =>{
         }
 
     }
-    console.log(req.session.cart);
-    res.redirect('/products');
+    if(req.body.pageCurrent){
+        console.log(req.session.cart);    
+        res.redirect('/products?page='+req.body.pageCurrent);
+    }else{
+        res.redirect('/products');
+    }
 
     next();
 };

@@ -4,7 +4,13 @@ block content
     .container.mt-3
         h3= messageError
         form(action="/users/create",method="post",enctype="multipart/form-data")
-           input(type="text" ,style="width:300px",name='name',class='form-control')
-           input(type="file", name="img")
-           button(class="btn btn-success mt-3") Create
+            label Name
+            input(type="text" ,style="width:300px",name='name',class='form-control') 
+            label Username
+            input(type="text" ,style="width:300px",name='username',class='form-control') 
+            label Password
+            input(type="password" ,style="width:300px",name='password',class='form-control') 
+            input(type="file", name="img")
+            button(class="btn btn-success mt-4") Create
+            
 
